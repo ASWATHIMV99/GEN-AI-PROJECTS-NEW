@@ -110,18 +110,12 @@ John: We should start. Alice said she's ready.
 ### Run Unit Tests
 ```bash
 # Run all tests
-python -m unittest test_transcript_analyzer.py -v
-
-# Run specific test category
-python -m unittest test_transcript_analyzer.TestTranscriptAnalyzer -v
-
-# Run integration tests (requires API key)
-python -m unittest test_transcript_analyzer.TestTranscriptAnalyzerIntegration -v
+python -m unittest discover
 ```
 
 ### Test Categories
 - **Core Function Tests**: JSON parsing, data structure validation
-- **Attendee Extraction**: Speaker labels, narrative mentions, unicode names
+- **Attendee Extraction**: Speaker labels, narrative mentions, unicode names, and timestamps
 - **Action Items**: Extraction, padding to 3 items, verb formatting
 - **JSON Parsing**: Regex extraction, malformed JSON handling
 - **Edge Cases**: Timestamps, empty input, single speaker
@@ -170,7 +164,7 @@ job-ghi789,failed,0.234,Empty input file
 ```
 
 ## Features
-- **Smart extraction**: Finds speaker names from various patterns
+- **Smart extraction**: Finds speaker names from various patterns, including timestamps and unicode characters
 - **Offline fallback**: If LLM fails, uses heuristic analysis to still produce results
 - **Multiple parsing methods**: Direct JSON, regex extraction, and fallback ensure reliability
 - **Beginner-friendly**: No web APIs, just file processing
